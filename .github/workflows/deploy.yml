@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Apex Tests
         run: |
-          sf apex run test --code-coverage --result-format junit --result-format junit --output-dir test-results --wait 60
+          sf apex run test --code-coverage --result-format junit --output-dir test-results --wait 60
           ls test-results
 
       - name: Upload raw JUnit files (artifact)
