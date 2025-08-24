@@ -55,11 +55,11 @@ jobs:
       #     echo "Org-wide Apex coverage: ${pct}%"
       #     awk "BEGIN { exit ($pct<75) }" || { echo "❌ Coverage ${pct}% is below 75%"; exit 1; }
 
-      - name: Publish unit test results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()               # still publish even if previous step failed
-        with:
-          files: "test-results/**/*.xml"
+      # - name: Publish unit test results
+      #   uses: EnricoMi/publish-unit-test-result-action@v2
+      #   if: always()               # still publish even if previous step failed
+      #   with:
+      #     files: "test-results/**/*.xml"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
