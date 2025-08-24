@@ -25,4 +25,12 @@ jobs:
         run: sf project deploy start --source-dir force-app --wait 10
 
       - name: Run Apex Tests
-        run: sf apex run test --code-coverage --wait 20
+        run: |
+          sf apex run test --code-coverage --result-format junit --result-format junit --output-dir test-results --wait 60
+          ls test-results
+
+      - name: Upload raw JUnit files (artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: apex-junit
+          path: test-results/**/*.xml
