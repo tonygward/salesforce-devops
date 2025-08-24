@@ -47,8 +47,10 @@ jobs:
             echo "Coverage file not found: $FILE"
             exit 1
           fi
+          cat "$FILE"
           total=$(jq '[.coverage[] | (.totalLines // (.numLocations // 0))] | add' "$FILE")
           covered=$(jq '[.coverage[] | (.coveredLines // (.numLocationsCovered // 0))] | add' "$FILE")
+
           pct=$(awk "BEGIN { if ($total==0) print 100; else print ($covered/$total)*100 }")
           echo "Org-wide Apex coverage: ${pct}%"
           awk "BEGIN { exit ($pct<75) }" || { echo "❌ Coverage ${pct}% is below 75%"; exit 1; }
