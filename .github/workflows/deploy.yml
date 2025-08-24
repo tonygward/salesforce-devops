@@ -1,0 +1,27 @@
+name: Deploy to Salesforce
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Salesforce CLI
+        run: npm install --global @salesforce/cli
+
+      - name: Authenticate to Salesforce
+        run: |
+          echo "${{ secrets.DEVHUB_AUTH_URL }}" > auth.txt
+          sf auth sfdxurl store --sfdx-url-file auth.txt --alias devhub
+
+    #   - name: Deploy Metadata
+    #     run: sf project deploy start --target-org devhub --source-dir force-app --wait 10
+
+    #   - name: Run Apex Tests
+    #     run: sf apex run test --target-org devhub --code-coverage --wait 20
