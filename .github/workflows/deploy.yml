@@ -17,11 +17,11 @@ jobs:
 
       - name: Authenticate to Salesforce
         run: |
-          echo "${{ secrets.DEVHUB_AUTH_URL }}" > auth.txt
+          echo "${{ secrets.GMAIL_AUTH_URL }}" > auth.txt
           sf auth sfdxurl store --sfdx-url-file auth.txt --alias devhub
 
-    #   - name: Deploy Metadata
-    #     run: sf project deploy start --target-org devhub --source-dir force-app --wait 10
+      - name: Deploy Metadata
+        run: sf project deploy start --target-org devhub --source-dir force-app --wait 10
 
-    #   - name: Run Apex Tests
-    #     run: sf apex run test --target-org devhub --code-coverage --wait 20
+      - name: Run Apex Tests
+        run: sf apex run test --target-org devhub --code-coverage --wait 20
