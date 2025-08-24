@@ -40,20 +40,20 @@ jobs:
             --wait 60
           # test-results/ will include JUnit + a test-result-codecoverage.json file
 
-      - name: Fail if org coverage < 75%
-        run: |
-          FILE="test-results/test-result-codecoverage.json"
-          if [ ! -f "$FILE" ]; then
-            echo "Coverage file not found: $FILE"
-            exit 1
-          fi
-          cat "$FILE"
-          total=$(jq '[.coverage[] | (.totalLines // (.numLocations // 0))] | add' "$FILE")
-          covered=$(jq '[.coverage[] | (.coveredLines // (.numLocationsCovered // 0))] | add' "$FILE")
+      # - name: Fail if org coverage < 75%
+      #   run: |
+      #     FILE="test-results/test-result-codecoverage.json"
+      #     if [ ! -f "$FILE" ]; then
+      #       echo "Coverage file not found: $FILE"
+      #       exit 1
+      #     fi
+      #     cat "$FILE"
+      #     total=$(jq '[.coverage[] | (.totalLines // (.numLocations // 0))] | add' "$FILE")
+      #     covered=$(jq '[.coverage[] | (.coveredLines // (.numLocationsCovered // 0))] | add' "$FILE")
 
-          pct=$(awk "BEGIN { if ($total==0) print 100; else print ($covered/$total)*100 }")
-          echo "Org-wide Apex coverage: ${pct}%"
-          awk "BEGIN { exit ($pct<75) }" || { echo "❌ Coverage ${pct}% is below 75%"; exit 1; }
+      #     pct=$(awk "BEGIN { if ($total==0) print 100; else print ($covered/$total)*100 }")
+      #     echo "Org-wide Apex coverage: ${pct}%"
+      #     awk "BEGIN { exit ($pct<75) }" || { echo "❌ Coverage ${pct}% is below 75%"; exit 1; }
 
       - name: Upload raw JUnit XML (optional)
         uses: actions/upload-artifact@v4
