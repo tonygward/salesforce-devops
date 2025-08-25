@@ -21,26 +21,15 @@ jobs:
       - name: Authenticate to Salesforce
         run: |
           echo "${{ secrets.GMAIL_AUTH_URL }}" > auth.txt
-          sf auth sfdxurl store --sfdx-url-file auth.txt --alias gmail
-          sf config set target-org=gmail
+          ./scripts/cicd/auth/login.sh
+          # sf auth sfdxurl store --sfdx-url-file auth.txt --alias gmail
+          # sf config set target-org=gmail
 
       - name: Deploy
         run: sf project deploy start --source-dir force-app --wait 10
 
       - name: Test Apex
-        run: |
-          testRunCode=0
-          sf apex run test \
-            --test-level RunLocalTests \
-            --output-dir test-results \
-            --code-coverage \
-            --detailed-coverage \
-            --wait 10 || testRunCode=$?
-
-          cat test-results/test-result.txt
-          testRunId=$(cat test-results/test-run-id.txt)
-          testResultsFileName="test-results/test-result-$testRunId.json"
-          echo $testResultsFileName
+        run: ./scripts/cicd/tests/apex/test.sh
 
       - name: Fail if org coverage < 75%
         run: ./scripts/cicd/tests/apex/check-code-coverage.sh
