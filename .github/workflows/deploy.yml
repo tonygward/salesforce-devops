@@ -31,14 +31,19 @@ jobs:
 
       - name: Run Apex tests (with coverage) + save results
         run: |
-          mkdir -p test-results
           sf apex run test \
             --test-level RunLocalTests \
-            --code-coverage \
-            --result-format junit \
             --output-dir test-results \
-            --wait 60
-          # test-results/ will include JUnit + a test-result-codecoverage.json file
+            --code-coverage \
+            --detailed-coverage \
+            --wait 10 \
+            --json
+
+          cat test-results/test-result.txt
+          testRunId=$(cat test-results/test-run-id.txt)
+          testResultsFileName="test-results/test-result-$testRunId.json"
+          echo $testResultsFileName
+
 
       # - name: Fail if org coverage < 75%
       #   run: |
@@ -54,12 +59,6 @@ jobs:
       #     pct=$(awk "BEGIN { if ($total==0) print 100; else print ($covered/$total)*100 }")
       #     echo "Org-wide Apex coverage: ${pct}%"
       #     awk "BEGIN { exit ($pct<75) }" || { echo "❌ Coverage ${pct}% is below 75%"; exit 1; }
-
-      # - name: Publish unit test results
-      #   uses: EnricoMi/publish-unit-test-result-action@v2
-      #   if: always()               # still publish even if previous step failed
-      #   with:
-      #     files: "test-results/**/*.xml"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4

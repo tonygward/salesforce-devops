@@ -1,0 +1,71 @@
+=== Apex Code Coverage for Test Run 707J900001geWMW
+TEST NAME                                                 CLASS BEING TESTED      OUTCOME  PERCENT  MESSAGE  RUNTIME (MS)
+────────────────────────────────────────────────────────  ──────────────────────  ───────  ───────  ───────  ────────────
+JobSharingTests.recordManuallyShared                      JobSharing              Pass     83%               994         
+SelfShuntTests.apiCalled                                  SelfShunt               Pass     88%               10          
+TestPropertyController.testGetPagedPropertyList           PagedResult             Pass     100%              1241        
+TestPropertyController.testGetPagedPropertyList           PropertyController      Pass     75%               1241        
+TestPropertyController.testGetPicturesNoResults           PagedResult             Pass     100%              35          
+TestPropertyController.testGetPicturesNoResults           PropertyController      Pass     20%               35          
+TestPropertyController.testGetPicturesWithResults         PagedResult             Pass     100%              422         
+TestPropertyController.testGetPicturesWithResults         PropertyController      Pass     30%               422         
+StringKataTests.defaultsToZero                            StringKata              Pass     50%               14          
+StringKataTests.returnsSingleNumber                       StringKata              Pass     67%               4           
+DateFormatterTests.getFormattedDateStubProvider           DateFormatter           Pass     100%              88          
+DateFormatterTests.getFormattedDateStubProvider           DateHelper              Pass     0%                88          
+DateFormatterTests.getFormattedDateStubProviderCleaner    DateHelper              Pass     0%                5           
+DateFormatterTests.getFormattedDateStubProviderCleaner    DateFormatter           Pass     100%              5           
+ContinuationControllerTests.testCallout                   ContinuationController  Pass     100%              25          
+GeocodingServiceTest.blankAddress                         GeocodingService        Pass     50%               16          
+GeocodingServiceTest.errorResponse                        GeocodingService        Pass     75%               5           
+GeocodingServiceTest.successResponse                      GeocodingService        Pass     86%               5           
+FileUtilitiesTest.createFileFailsWhenIncorrectBase64Data  FileUtilities           Pass     53%               97          
+FileUtilitiesTest.createFileFailsWhenIncorrectFilename    FileUtilities           Pass     53%               21          
+FileUtilitiesTest.createFileFailsWhenIncorrectRecordId    FileUtilities           Pass     82%               253         
+FileUtilitiesTest.createFileSucceedsWhenCorrectInput      FileUtilities           Pass     88%               263         
+MyIterableTest.testIterableForLoop                        MyIterable              Pass     45%               12          
+POV_ControllerTest.test_All                               POV_Controller          Pass     91%               956         
+HelloWorldTest.testSayHello                               HelloWorld              Pass     100%              7           
+TestSampleDataController.importSampleData                 SampleDataController    Pass     100%              244         
+AccountControllerTests.getAccounts                        AccountController       Pass     100%              124         
+FizzBuzzTests.returnsNumber                               FizzBuzz                Pass     100%              14          
+
+
+=== Apex Code Coverage by Class
+CLASSES                 PERCENT  UNCOVERED LINES   
+──────────────────────  ───────  ──────────────────
+POV_Controller          91%      18                
+ContinuationController  100%                       
+DateHelper              0%       2,3               
+AccountController       100%                       
+SelfShunt               88%      12                
+SampleDataController    100%                       
+FileUtilities           100%                       
+GeocodingService        100%                       
+PropertyController      100%                       
+PagedResult             100%                       
+StringKata              83%      12                
+MyIterable              45%      11,13,16,17,18,...
+DateFormatter           100%                       
+JobSharing              83%      14,17             
+FizzBuzz                100%                       
+HelloWorld              100%                       
+
+
+
+
+=== Test Summary
+NAME                 VALUE                         
+───────────────────  ──────────────────────────────
+Outcome              Passed                        
+Tests Ran            23                            
+Pass Rate            100%                          
+Fail Rate            0%                            
+Skip Rate            0%                            
+Test Run Id          707J900001geWMW               
+Test Setup Time      0 ms                          
+Test Execution Time  4855 ms                       
+Test Total Time      4855 ms                       
+Org Id               00D4K000000CqxoUAC            
+Username             tonygward.salesforce@gmail.com
+Org Wide Coverage    64%                           
