@@ -42,9 +42,8 @@ jobs:
           testResultsFileName="test-results/test-result-$testRunId.json"
           echo $testResultsFileName
 
-          exit "$testRunCode" # Stop if tests failed
-
-          ./scripts/cicd/tests/apex/check-code-coverage.sh
+      - name: Fail if org coverage < 75%
+        run: ./scripts/cicd/tests/apex/check-code-coverage.sh
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
