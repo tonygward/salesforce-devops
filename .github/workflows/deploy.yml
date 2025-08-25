@@ -44,7 +44,7 @@ jobs:
 
           exit "$testRunCode" # Stop if tests failed
 
-          ./scripts/cicd/check-class-coverage.sh
+          ./scripts/cicd/tests/apex/check-code-coverage.sh
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
