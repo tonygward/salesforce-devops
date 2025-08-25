@@ -1,34 +1,37 @@
-=== Apex Code Coverage for Test Run 707J900001geWMW
-TEST NAME                                                 CLASS BEING TESTED      OUTCOME  PERCENT  MESSAGE  RUNTIME (MS)
-────────────────────────────────────────────────────────  ──────────────────────  ───────  ───────  ───────  ────────────
-JobSharingTests.recordManuallyShared                      JobSharing              Pass     83%               994         
-SelfShuntTests.apiCalled                                  SelfShunt               Pass     88%               10          
-TestPropertyController.testGetPagedPropertyList           PagedResult             Pass     100%              1241        
-TestPropertyController.testGetPagedPropertyList           PropertyController      Pass     75%               1241        
-TestPropertyController.testGetPicturesNoResults           PagedResult             Pass     100%              35          
-TestPropertyController.testGetPicturesNoResults           PropertyController      Pass     20%               35          
-TestPropertyController.testGetPicturesWithResults         PagedResult             Pass     100%              422         
-TestPropertyController.testGetPicturesWithResults         PropertyController      Pass     30%               422         
-StringKataTests.defaultsToZero                            StringKata              Pass     50%               14          
-StringKataTests.returnsSingleNumber                       StringKata              Pass     67%               4           
-DateFormatterTests.getFormattedDateStubProvider           DateFormatter           Pass     100%              88          
-DateFormatterTests.getFormattedDateStubProvider           DateHelper              Pass     0%                88          
-DateFormatterTests.getFormattedDateStubProviderCleaner    DateHelper              Pass     0%                5           
-DateFormatterTests.getFormattedDateStubProviderCleaner    DateFormatter           Pass     100%              5           
-ContinuationControllerTests.testCallout                   ContinuationController  Pass     100%              25          
-GeocodingServiceTest.blankAddress                         GeocodingService        Pass     50%               16          
-GeocodingServiceTest.errorResponse                        GeocodingService        Pass     75%               5           
-GeocodingServiceTest.successResponse                      GeocodingService        Pass     86%               5           
-FileUtilitiesTest.createFileFailsWhenIncorrectBase64Data  FileUtilities           Pass     53%               97          
-FileUtilitiesTest.createFileFailsWhenIncorrectFilename    FileUtilities           Pass     53%               21          
-FileUtilitiesTest.createFileFailsWhenIncorrectRecordId    FileUtilities           Pass     82%               253         
-FileUtilitiesTest.createFileSucceedsWhenCorrectInput      FileUtilities           Pass     88%               263         
-MyIterableTest.testIterableForLoop                        MyIterable              Pass     45%               12          
-POV_ControllerTest.test_All                               POV_Controller          Pass     91%               956         
-HelloWorldTest.testSayHello                               HelloWorld              Pass     100%              7           
-TestSampleDataController.importSampleData                 SampleDataController    Pass     100%              244         
-AccountControllerTests.getAccounts                        AccountController       Pass     100%              124         
-FizzBuzzTests.returnsNumber                               FizzBuzz                Pass     100%              14          
+=== Apex Code Coverage for Test Run 707J900001geWMk
+TEST NAME                                                 CLASS BEING TESTED      OUTCOME  PERCENT  MESSAGE                                                                        RUNTIME (MS)
+────────────────────────────────────────────────────────  ──────────────────────  ───────  ───────  ─────────────────────────────────────────────────────────────────────────────  ────────────
+JobSharingTests.recordManuallyShared                      JobSharing              Pass     83%                                                                                     908         
+SelfShuntTests.apiCalled                                  SelfShunt               Pass     88%                                                                                     11          
+TestPropertyController.testGetPagedPropertyList           PagedResult             Pass     100%                                                                                    1327        
+TestPropertyController.testGetPagedPropertyList           PropertyController      Pass     75%                                                                                     1327        
+TestPropertyController.testGetPicturesNoResults           PagedResult             Pass     100%                                                                                    34          
+TestPropertyController.testGetPicturesNoResults           PropertyController      Pass     20%                                                                                     34          
+TestPropertyController.testGetPicturesWithResults         PagedResult             Pass     100%                                                                                    434         
+TestPropertyController.testGetPicturesWithResults         PropertyController      Pass     30%                                                                                     434         
+StringKataTests.defaultsToZero                            StringKata              Pass     50%                                                                                     15          
+StringKataTests.returnsSingleNumber                       StringKata              Pass     67%                                                                                     3           
+DateFormatterTests.getFormattedDateStubProvider           DateHelper              Pass     0%                                                                                      23          
+DateFormatterTests.getFormattedDateStubProvider           DateFormatter           Pass     100%                                                                                    23          
+DateFormatterTests.getFormattedDateStubProviderCleaner    DateHelper              Pass     0%                                                                                      4           
+DateFormatterTests.getFormattedDateStubProviderCleaner    DateFormatter           Pass     100%                                                                                    4           
+ContinuationControllerTests.testCallout                   ContinuationController  Pass     100%                                                                                    29          
+GeocodingServiceTest.blankAddress                         GeocodingService        Pass     50%                                                                                     16          
+GeocodingServiceTest.errorResponse                        GeocodingService        Pass     75%                                                                                     4           
+GeocodingServiceTest.successResponse                      GeocodingService        Pass     86%                                                                                     4           
+FileUtilitiesTest.createFileFailsWhenIncorrectBase64Data  FileUtilities           Pass     53%                                                                                     97          
+FileUtilitiesTest.createFileFailsWhenIncorrectFilename    FileUtilities           Pass     53%                                                                                     24          
+FileUtilitiesTest.createFileFailsWhenIncorrectRecordId    FileUtilities           Pass     82%                                                                                     354         
+FileUtilitiesTest.createFileSucceedsWhenCorrectInput      FileUtilities           Pass     88%                                                                                     252         
+MyIterableTest.testIterableForLoop                        MyIterable              Pass     45%                                                                                     12          
+POV_ControllerTest.test_All                               POV_Controller          Pass     91%                                                                                     1253        
+HelloWorldTest.testName                                                           Fail              System.AssertException: Assertion Failed: Assertion failed: failing unit test  
+                                                                                                    External entry point                                                           
+                                                                                                    Class.HelloWorldTest.testName: line 11, column 1                               10          
+HelloWorldTest.testSayHello                               HelloWorld              Pass     100%                                                                                    5           
+TestSampleDataController.importSampleData                 SampleDataController    Pass     100%                                                                                    429         
+AccountControllerTests.getAccounts                        AccountController       Pass     100%                                                                                    146         
+FizzBuzzTests.returnsNumber                               FizzBuzz                Pass     100%                                                                                    14          
 
 
 === Apex Code Coverage by Class
@@ -57,15 +60,15 @@ HelloWorld              100%
 === Test Summary
 NAME                 VALUE                         
 ───────────────────  ──────────────────────────────
-Outcome              Passed                        
-Tests Ran            23                            
-Pass Rate            100%                          
-Fail Rate            0%                            
+Outcome              Failed                        
+Tests Ran            24                            
+Pass Rate            96%                           
+Fail Rate            4%                            
 Skip Rate            0%                            
-Test Run Id          707J900001geWMW               
+Test Run Id          707J900001geWMk               
 Test Setup Time      0 ms                          
-Test Execution Time  4855 ms                       
-Test Total Time      4855 ms                       
+Test Execution Time  5408 ms                       
+Test Total Time      5408 ms                       
 Org Id               00D4K000000CqxoUAC            
 Username             tonygward.salesforce@gmail.com
 Org Wide Coverage    64%                           

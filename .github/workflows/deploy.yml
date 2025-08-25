@@ -31,19 +31,20 @@ jobs:
 
       - name: Run Apex tests (with coverage) + save results
         run: |
-          testRun=$(sf apex run test \
+          testRunCode=0
+          sf apex run test \
             --test-level RunLocalTests \
             --output-dir test-results \
             --code-coverage \
             --detailed-coverage \
-            --wait 10 \
-            --json)
+            --wait 10 || testRunCode=$?
 
           cat test-results/test-result.txt
           testRunId=$(cat test-results/test-run-id.txt)
           testResultsFileName="test-results/test-result-$testRunId.json"
           echo $testResultsFileName
 
+          exit "$testRunCode"
 
       # - name: Fail if org coverage < 75%
       #   run: |
