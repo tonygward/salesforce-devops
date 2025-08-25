@@ -31,13 +31,13 @@ jobs:
 
       - name: Run Apex tests (with coverage) + save results
         run: |
-          sf apex run test \
+          testRun=$(sf apex run test \
             --test-level RunLocalTests \
             --output-dir test-results \
             --code-coverage \
             --detailed-coverage \
             --wait 10 \
-            --json
+            --json)
 
           cat test-results/test-result.txt
           testRunId=$(cat test-results/test-run-id.txt)
