@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: CI/CD Scripts
+        run: find ./scripts/cicd -type f -exec chmod u+x {} +
+
       - name: Install Salesforce CLI
         run: npm install --global @salesforce/cli
 
@@ -41,53 +44,7 @@ jobs:
 
           exit "$testRunCode" # Stop if tests failed
 
-      - name: Fail if org coverage < 75%
-        run: |
-          FILE="test-results/test-result-codecoverage.json"
-          if [ ! -f "$FILE" ]; then
-            echo "Coverage file not found: $FILE"
-            exit 1
-          fi
-
-          THRESHOLD="${2:-75}"
-          violations_json=$(
-            jq --argjson th "$THRESHOLD" '
-              # Accept either:
-              # 1) an array of classes, or
-              # 2) an object with .coverage.coverage (sf CLI format)
-              (if type=="array" then .
-              elif has("coverage") and (.coverage|type=="array") then .coverage
-              elif has("coverage") and (.coverage|has("coverage")) then .coverage.coverage
-              else . end)
-              | map({
-                  name: .name,
-                  pct: ( if (.coveredPercent // empty) != null then (.coveredPercent|tonumber)
-                        elif (.totalCovered // empty) != null and (.totalLines // empty) != null
-                          then ((.totalCovered|tonumber) * 100 / (.totalLines|tonumber))
-                        else null end )
-                })
-              | map(select(.pct != null and .pct < $th))
-            ' "$FILE"
-          )
-
-          count=$(jq 'length' <<<"$violations_json")
-          if [ "$count" -gt 0 ]; then
-            echo "❌ Classes below ${THRESHOLD}% coverage:"
-            jq -r '.[] | @tsv' <<<"$violations_json" | awk -F'\t' '{printf "- %s: %.2f%%\n", $1, $2}'
-            # Optional: write a table into the GitHub job summary
-            if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
-              {
-                echo "## Classes below ${THRESHOLD}% coverage"
-                echo ""
-                echo "| Class | Coverage |"
-                echo "|---|---:|"
-                jq -r '.[] | @tsv' <<<"$violations_json" | awk -F'\t' '{printf "| %s | %.2f%% |\n", $1, $2}'
-              } >> "$GITHUB_STEP_SUMMARY"
-            fi
-            exit 1
-          else
-            echo "✅ All classes meet the ${THRESHOLD}% coverage threshold."
-          fi
+          ./scripts/cicd/check-class-coverage.sh
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
