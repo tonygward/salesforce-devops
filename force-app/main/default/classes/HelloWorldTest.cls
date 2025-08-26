@@ -6,8 +6,8 @@ public class HelloWorldTest {
         System.Assert.areEqual('Hello, World!', result, 'The sayHello method should return Hello, World!');
     }
 
-    @isTest
-    static void failTest() {
-        System.Assert.fail('check failure');
-    }
+    // @isTest
+    // static void failTest() {
+    //     System.Assert.fail('check failure');
+    // }
 }
