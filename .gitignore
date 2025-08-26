@@ -47,4 +47,6 @@ $RECYCLE.BIN/
 **/.venv/
 **/venv/
 
+# Custom
+test-results
 package-lock.json
