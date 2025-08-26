@@ -5,4 +5,9 @@ public class HelloWorldTest {
         String result = HelloWorld.sayHello();
         System.Assert.areEqual('Hello, World!', result, 'The sayHello method should return Hello, World!');
     }
+
+    @isTest
+    static void failTest() {
+        System.Assert.fail('check failure');
+    }
 }
