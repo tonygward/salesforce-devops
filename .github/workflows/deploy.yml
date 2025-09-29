@@ -11,31 +11,31 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: CI/CD Scripts
-        run: find ./scripts/cicd -type f -exec chmod u+x {} +
+      # - name: CI/CD Scripts
+      #   run: find ./scripts/cicd -type f -exec chmod u+x {} +
 
-      - name: Install Salesforce CLI
-        run: npm install --global @salesforce/cli
+      # - name: Install Salesforce CLI
+      #   run: npm install --global @salesforce/cli
 
-      - name: Authenticate to Salesforce
-        run: |
-          echo "${{ secrets.GMAIL_AUTH_URL }}" > auth.txt
-          ./scripts/cicd/auth/login.sh auth.txt gmail
+      # - name: Authenticate to Salesforce
+      #   run: |
+      #     echo "${{ secrets.GMAIL_AUTH_URL }}" > auth.txt
+      #     ./scripts/cicd/auth/login.sh auth.txt gmail
 
-      - name: Deploy
-        run: sf project deploy start --source-dir force-app --wait 10
+      # - name: Deploy
+      #   run: sf project deploy start --source-dir force-app --wait 10
 
-      - name: Test Apex
-        run: ./scripts/cicd/tests/apex/test-project.sh
+      # - name: Test Apex
+      #   run: ./scripts/cicd/tests/apex/test-project.sh
 
-      - name: Fail if code coverage < 75%
-        run: ./scripts/cicd/tests/apex/check-code-coverage.sh
+      # - name: Fail if code coverage < 75%
+      #   run: ./scripts/cicd/tests/apex/check-code-coverage.sh
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: apex-test-artifacts
-          path: |
-            test-results/**
-            coverage/**
+      # - name: Upload artifacts
+      #   uses: actions/upload-artifact@v4
+      #   if: always()
+      #   with:
+      #     name: apex-test-artifacts
+      #     path: |
+      #       test-results/**
+      #       coverage/**

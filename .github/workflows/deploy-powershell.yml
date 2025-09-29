@@ -1,4 +1,4 @@
-name: Deploy to Salesforce
+name: Deploy to Salesforce via PowerShell
 
 on:
   push:
@@ -11,9 +11,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: PowerShell
+      - name: Install Psfdx
         shell: pwsh
-        run: Write-Host "hello world"
+        run: |
+          git clone --depth=1 https://github.com/tonygward/psfdx.git ./psfdx
+          ./psfdx/install.ps1
+          Get-Command -Module psfdx*
 
       # - name: CI/CD Scripts
       #   run: find ./scripts/cicd -type f -exec chmod u+x {} +
