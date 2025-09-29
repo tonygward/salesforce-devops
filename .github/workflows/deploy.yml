@@ -3,7 +3,6 @@ name: Deploy to Salesforce
 on:
   push:
     branches: [ main ]
-  pull_request:
 
 jobs:
   deploy:
@@ -11,10 +10,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
-      - name: PowerShell
-        shell: pwsh
-        run: Write-Host "hello world"
 
       - name: CI/CD Scripts
         run: find ./scripts/cicd -type f -exec chmod u+x {} +
