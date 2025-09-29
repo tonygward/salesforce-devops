@@ -16,7 +16,7 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/tonygward/psfdx.git ./psfdx
           ./psfdx/install.ps1
-          Get-Command -Module psfdx*
+          Install-SalesforceCli
 
       # - name: CI/CD Scripts
       #   run: find ./scripts/cicd -type f -exec chmod u+x {} +
