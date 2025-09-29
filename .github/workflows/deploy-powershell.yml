@@ -21,7 +21,7 @@ jobs:
       - name: Authenticate to Salesforce
         run: |
           echo "${{ secrets.GMAIL_AUTH_URL }}" > auth.txt
-          Connect-SalesforceAuthUrl -SfdxUrlFile $auth.txt -SetDefault
+          Connect-SalesforceAuthUrl -SfdxUrlFile auth.txt -SetDefault
           Get-SalesforceTargetOrg
 
       # - name: Authenticate to Salesforce
