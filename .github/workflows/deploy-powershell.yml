@@ -19,6 +19,7 @@ jobs:
           Install-SalesforceCli
 
       - name: Authenticate to Salesforce
+        shell: pwsh
         run: |
           echo "${{ secrets.GMAIL_AUTH_URL }}" > auth.txt
           Connect-SalesforceAuthUrl -SfdxUrlFile auth.txt -SetDefault
