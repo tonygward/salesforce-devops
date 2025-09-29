@@ -30,9 +30,6 @@ jobs:
         run: |
           Deploy-SalesforceComponent -SourceDir force-app -Wait 10
 
-      # - name: Deploy
-      #   run: sf project deploy start --source-dir force-app --wait 10
-
       # - name: Test Apex
       #   run: ./scripts/cicd/tests/apex/test-project.sh
 
