@@ -18,11 +18,11 @@ jobs:
           ./psfdx/install.ps1
           Install-SalesforceCli
 
-      # - name: CI/CD Scripts
-      #   run: find ./scripts/cicd -type f -exec chmod u+x {} +
-
-      # - name: Install Salesforce CLI
-      #   run: npm install --global @salesforce/cli
+      - name: Authenticate to Salesforce
+        run: |
+          echo "${{ secrets.GMAIL_AUTH_URL }}" > auth.txt
+          Connect-SalesforceAuthUrl -SfdxUrlFile $auth.txt -SetDefault
+          Get-SalesforceTargetOrg
 
       # - name: Authenticate to Salesforce
       #   run: |
